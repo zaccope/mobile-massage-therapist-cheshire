@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import Image from 'next/image'
 import { List, X, Phone } from '@phosphor-icons/react'
 
 const navLinks = [
@@ -164,14 +165,23 @@ export default function Navbar() {
 
 function Logo() {
   return (
-    <div className="flex items-baseline gap-2.5">
-      <span className="font-heading italic text-xl md:text-[22px] text-gold-400 tracking-tight leading-none">
-        Mobile Massage
-      </span>
-      <span className="h-4 w-px bg-gold-700/60 self-center" />
-      <span className="font-body text-[10px] tracking-[0.35em] uppercase text-ink-300 leading-none">
-        Cheshire
-      </span>
+    <div className="flex items-center gap-2.5">
+      <Image
+        src="/logo-mark.png"
+        alt="Mobile Massage Therapist Cheshire"
+        width={390}
+        height={135}
+        priority
+        className="h-9 md:h-11 w-auto"
+      />
+      <div className="flex flex-col leading-none">
+        <span className="font-heading text-[15px] md:text-[17px] text-ink-50 tracking-tight">
+          Mobile Massage
+        </span>
+        <span className="font-body text-[9px] md:text-[10px] tracking-[0.35em] uppercase text-gold-500 mt-1">
+          Cheshire
+        </span>
+      </div>
     </div>
   )
 }
