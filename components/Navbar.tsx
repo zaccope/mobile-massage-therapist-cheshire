@@ -45,8 +45,8 @@ export default function Navbar() {
             : 'bg-ink-950/70 backdrop-blur-sm'
         }`}
       >
-        <nav className="max-w-7xl mx-auto px-5 md:px-8 flex items-center justify-between h-16 md:h-20">
-          <a href="#" className="flex items-center gap-3" aria-label="Mobile Massage Therapist Cheshire">
+        <nav className="max-w-7xl mx-auto px-5 md:px-8 flex items-center justify-between h-16 md:h-20 gap-4">
+          <a href="#" className="flex items-center gap-3 min-w-0" aria-label="Mobile Massage Therapist Cheshire">
             <Logo />
           </a>
 
@@ -96,11 +96,11 @@ export default function Navbar() {
         <div className="absolute inset-0 radial-spot pointer-events-none" />
 
         <div className="relative h-full flex flex-col bg-ink-950">
-          <div className="flex items-center justify-between h-16 px-5 border-b border-gold-900/40 bg-ink-950">
+          <div className="flex items-center justify-between gap-4 h-16 px-5 border-b border-gold-900/40 bg-ink-950">
             <Logo />
             <button
               onClick={() => setIsOpen(false)}
-              className="w-11 h-11 flex items-center justify-center text-gold-400 rounded-sm border border-gold-700/60 bg-ink-900"
+              className="w-11 h-11 flex items-center justify-center text-gold-400 rounded-sm border border-gold-700/60 bg-ink-900 flex-shrink-0"
               aria-label="Close menu"
             >
               <X weight="bold" className="w-5 h-5" />
@@ -165,20 +165,20 @@ export default function Navbar() {
 
 function Logo() {
   return (
-    <div className="flex items-center gap-2.5">
+    <div className="flex items-center gap-3 min-w-0">
       <Image
         src="/logo-mark.png"
         alt="Mobile Massage Therapist Cheshire"
         width={390}
         height={135}
         priority
-        className="h-9 md:h-11 w-auto"
+        className="h-10 md:h-12 w-auto flex-shrink-0"
       />
-      <div className="flex flex-col leading-none">
-        <span className="font-heading text-[15px] md:text-[17px] text-ink-50 tracking-tight">
+      <div className="hidden sm:flex flex-col leading-none min-w-0">
+        <span className="font-heading text-[16px] md:text-[18px] text-ink-50 tracking-tight truncate">
           Mobile Massage
         </span>
-        <span className="font-body text-[9px] md:text-[10px] tracking-[0.35em] uppercase text-gold-500 mt-1">
+        <span className="font-body text-[10px] tracking-[0.35em] uppercase text-gold-500 mt-1 truncate">
           Cheshire
         </span>
       </div>

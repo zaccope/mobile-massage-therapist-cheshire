@@ -17,6 +17,7 @@ import {
   UsersThree,
 } from '@phosphor-icons/react/dist/ssr'
 import ContactForm from '@/components/ContactForm'
+import Reveal from '@/components/Reveal'
 
 const PHONE = '07494 729 630'
 const TEL = '+447494729630'
@@ -86,14 +87,14 @@ export default function Home() {
       <section className="relative min-h-[100dvh] flex items-center pt-28 pb-20 md:pt-36 md:pb-28">
         <div className="absolute inset-0 radial-spot pointer-events-none" />
         <div
-          className="absolute top-0 right-0 w-[60%] h-[70%] opacity-[0.10] pointer-events-none"
+          className="absolute top-0 right-0 w-[60%] h-[70%] opacity-[0.10] pointer-events-none drift"
           style={{
             background:
               'radial-gradient(ellipse at top right, #CDA24A 0%, transparent 60%)',
           }}
         />
         <div
-          className="absolute bottom-0 left-0 w-[50%] h-[50%] opacity-[0.08] pointer-events-none"
+          className="absolute bottom-0 left-0 w-[50%] h-[50%] opacity-[0.08] pointer-events-none drift-slow"
           style={{
             background:
               'radial-gradient(ellipse at bottom left, #B8913A 0%, transparent 70%)',
@@ -102,7 +103,7 @@ export default function Home() {
 
         <div className="relative max-w-7xl mx-auto px-5 md:px-8 w-full grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           {/* Left: poster-style centered brand block */}
-          <div className="lg:col-span-7 text-center lg:text-left">
+          <div className="lg:col-span-7 text-center lg:text-left hero-reveal">
             <div className="mb-8 flex justify-center lg:justify-start">
               <Image
                 src="/logo-mark.png"
@@ -172,7 +173,7 @@ export default function Home() {
           </div>
 
           {/* Right: image panel */}
-          <div className="lg:col-span-5 relative">
+          <Reveal as="div" className="lg:col-span-5 relative" delay={300} y={20}>
             <div className="relative aspect-[4/5] w-full max-w-md mx-auto">
               <div
                 className="absolute inset-0 rounded-sm overflow-hidden border border-gold-700/40"
@@ -204,7 +205,7 @@ export default function Home() {
                 <div className="font-heading text-2xl text-ink-50">Crewe</div>
               </div>
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
 
@@ -216,7 +217,7 @@ export default function Home() {
       {/* TREATMENTS */}
       <section id="treatments" className="relative py-24 md:py-32">
         <div className="max-w-7xl mx-auto px-5 md:px-8">
-          <div className="max-w-2xl mx-auto text-center mb-16 md:mb-20">
+          <Reveal className="max-w-2xl mx-auto text-center mb-16 md:mb-20">
             <div className="inline-flex items-center gap-3 mb-6">
               <span className="h-px w-8 bg-gold-700" />
               <span className="text-[10px] tracking-[0.4em] uppercase text-gold-500 font-medium">
@@ -232,15 +233,17 @@ export default function Home() {
               from deep knots and sciatic pain to pure switch-off time.
               Not sure which? Just tell me what&rsquo;s going on when you book.
             </p>
-          </div>
+          </Reveal>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-gold-900/30 border border-gold-900/40 rounded-sm overflow-hidden">
-            {treatments.map((t) => {
+            {treatments.map((t, i) => {
               const Icon = t.icon
               return (
-                <article
+                <Reveal
                   key={t.name}
-                  className="group relative bg-ink-950 p-8 md:p-10 hover:bg-ink-900 transition-colors"
+                  as="article"
+                  delay={i * 90}
+                  className="group relative bg-ink-950 p-8 md:p-10 hover:bg-ink-900 transition-colors lift"
                 >
                   <div className="flex items-start justify-between gap-6 mb-5">
                     <div className="w-12 h-12 rounded-sm border border-gold-700/50 bg-ink-900 flex items-center justify-center group-hover:border-gold-500 transition-colors">
@@ -256,14 +259,14 @@ export default function Home() {
                   <p className="text-ink-300 leading-relaxed text-[15px] max-w-md">
                     {t.desc}
                   </p>
-                </article>
+                </Reveal>
               )
             })}
           </div>
 
-          <p className="text-center text-ink-400 text-sm mt-10 max-w-xl mx-auto">
+          <Reveal as="p" delay={200} className="text-center text-ink-400 text-sm mt-10 max-w-xl mx-auto">
             Perfect for relieving stress, muscle tension, and boosting overall well-being. Prices on enquiry.
-          </p>
+          </Reveal>
         </div>
       </section>
 
@@ -271,7 +274,7 @@ export default function Home() {
       <section id="about" className="relative py-24 md:py-32 border-t border-gold-900/30">
         <div className="absolute inset-0 radial-spot opacity-60 pointer-events-none" />
         <div className="relative max-w-7xl mx-auto px-5 md:px-8 grid lg:grid-cols-12 gap-12 lg:gap-20 items-center">
-          <div className="lg:col-span-5 order-2 lg:order-1">
+          <Reveal as="div" className="lg:col-span-5 order-2 lg:order-1" y={20}>
             <div className="relative aspect-[4/5] w-full max-w-sm mx-auto lg:mx-0">
               <div
                 className="absolute inset-0 rounded-sm overflow-hidden border border-gold-700/40"
@@ -292,9 +295,9 @@ export default function Home() {
                 </div>
               </div>
             </div>
-          </div>
+          </Reveal>
 
-          <div className="lg:col-span-7 order-1 lg:order-2">
+          <Reveal as="div" className="lg:col-span-7 order-1 lg:order-2" delay={120}>
             <span className="text-[10px] tracking-[0.4em] uppercase text-gold-500 font-medium mb-5 block">
               About the Practice
             </span>
@@ -317,18 +320,22 @@ export default function Home() {
             </p>
 
             <div className="grid sm:grid-cols-3 gap-6">
-              {principles.map((p) => {
+              {principles.map((p, i) => {
                 const Icon = p.icon
                 return (
-                  <div key={p.title} className="border-t border-gold-800/50 pt-5">
+                  <Reveal
+                    key={p.title}
+                    delay={200 + i * 100}
+                    className="border-t border-gold-800/50 pt-5"
+                  >
                     <Icon weight="duotone" className="w-6 h-6 text-gold-400 mb-3" />
                     <h4 className="font-heading text-lg text-ink-50 mb-1.5">{p.title}</h4>
                     <p className="text-ink-300 text-sm leading-relaxed">{p.text}</p>
-                  </div>
+                  </Reveal>
                 )
               })}
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
 
@@ -342,7 +349,7 @@ export default function Home() {
           }}
         />
         <div className="relative max-w-6xl mx-auto px-5 md:px-8 grid lg:grid-cols-2 gap-12 lg:gap-20">
-          <div>
+          <Reveal as="div">
             <span className="text-[10px] tracking-[0.4em] uppercase text-gold-500 font-medium mb-5 block">
               Book an Appointment
             </span>
@@ -357,7 +364,7 @@ export default function Home() {
             <div className="space-y-5">
               <a
                 href={`tel:${TEL}`}
-                className="flex items-center gap-4 p-5 border border-gold-800/50 rounded-sm hover:border-gold-600 hover:bg-ink-900 transition-all group"
+                className="flex items-center gap-4 p-5 border border-gold-800/50 rounded-sm hover:border-gold-600 hover:bg-ink-900 transition-all group lift"
               >
                 <div className="w-11 h-11 rounded-sm bg-gold-600/10 border border-gold-700/50 flex items-center justify-center flex-shrink-0 group-hover:bg-gold-600 group-hover:border-gold-600 transition-colors">
                   <Phone weight="fill" className="w-5 h-5 text-gold-400 group-hover:text-ink-950 transition-colors" />
@@ -372,7 +379,7 @@ export default function Home() {
                 href={WHATSAPP}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-4 p-5 border border-gold-800/50 rounded-sm hover:border-gold-600 hover:bg-ink-900 transition-all group"
+                className="flex items-center gap-4 p-5 border border-gold-800/50 rounded-sm hover:border-gold-600 hover:bg-ink-900 transition-all group lift"
               >
                 <div className="w-11 h-11 rounded-sm bg-gold-600/10 border border-gold-700/50 flex items-center justify-center flex-shrink-0 group-hover:bg-gold-600 group-hover:border-gold-600 transition-colors">
                   <WhatsappLogo weight="fill" className="w-5 h-5 text-gold-400 group-hover:text-ink-950 transition-colors" />
@@ -393,15 +400,15 @@ export default function Home() {
                 </div>
               </div>
             </div>
-          </div>
+          </Reveal>
 
-          <div className="bg-ink-900/50 border border-gold-900/30 rounded-sm p-6 md:p-10">
+          <Reveal as="div" delay={120} className="bg-ink-900/50 border border-gold-900/30 rounded-sm p-6 md:p-10">
             <h3 className="font-heading text-2xl text-ink-50 mb-2">Send a message</h3>
             <p className="text-ink-400 text-sm mb-8">
               Tell me which treatment you&rsquo;re after and I&rsquo;ll be in touch with availability.
             </p>
             <ContactForm />
-          </div>
+          </Reveal>
         </div>
       </section>
 
